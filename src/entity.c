@@ -74,7 +74,8 @@ entity *wall_create(Vector3 position, float height, float width, float length,
 // PROJECTILE
 
 bool projectile_finished(struct entity *proj) {
-  return Vector3Equals(proj->position, proj->destination);
+  return false;
+  //return Vector3Equals(proj->position, proj->destination);
 }
 
 void projectile_update(struct entity *proj) {

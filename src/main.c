@@ -21,7 +21,7 @@ int main(void) {
 
   int cameraMode = CAMERA_FIRST_PERSON;
 
-  //ShowCursor();
+  // ShowCursor();
 
   DisableCursor();
 
@@ -29,6 +29,11 @@ int main(void) {
 
   entities_add(entities,
                wall_create((Vector3){0.0, 2.5, 16.0}, 5.0, 32.0, 1.0, GOLD));
+
+  entities_add(entities, wall_create((Vector3){-16.0f, 2.5f, 0.0f}, 5.0f, 1.0f,
+                                     32.0f, BLUE));
+  entities_add(entities, wall_create((Vector3){16.0f, 2.5f, 0.0f}, 5.0f, 1.0f,
+                                     32.0f, LIME));
 
   while (!WindowShouldClose()) {
     UpdateCameraPro(&camera,
@@ -64,10 +69,6 @@ int main(void) {
     BeginMode3D(camera);
     DrawPlane((Vector3){0.0f, 0.0f, 0.0f}, (Vector2){32.0f, 32.0f},
               LIGHTGRAY); // Draw ground
-    DrawCube((Vector3){-16.0f, 2.5f, 0.0f}, 1.0f, 5.0f, 32.0f,
-             BLUE); // Draw a blue wall
-    DrawCube((Vector3){16.0f, 2.5f, 0.0f}, 1.0f, 5.0f, 32.0f,
-             LIME); // Draw a green wall
 
     entities_process(entities, RENDER);
 
