@@ -6,16 +6,23 @@ typedef void (*UpdateFunc)(entity *);
 typedef void (*RenderFunc)(entity *);
 typedef void (*CollisionFunc)(entity *);
 
-typedef enum {
+typedef enum
+{
   PROJECTILE,
   STATIC,
 } etype;
 
-typedef enum { RENDER, UPDATE, COLLID } eevents;
+typedef enum
+{
+  RENDER,
+  UPDATE,
+  COLLID
+} eevents;
 
 struct list;
 
-struct entity {
+struct entity
+{
   Vector3 position;
   Vector3 destination;
   Vector3 origin;
@@ -23,21 +30,22 @@ struct entity {
   float speed;
   Color color;
   etype type;
-  struct entities* owner;
+  struct entities *owner;
   UpdateFunc update;
   RenderFunc render;
   CollisionFunc onCollide;
 };
 
-struct entities {
+struct entities
+{
   struct list *entity_list;
 };
 
-struct entities* entities_create();
-void entities_process(struct entities* e, eevents event);
-void entities_destroy(struct entities* e);
-void entities_add(struct entities* e, entity* ent);
-void entities_free_entity(struct entities* e, struct entity* ent);
+struct entities *entities_create();
+void entities_process(struct entities *e, eevents event);
+void entities_destroy(struct entities *e);
+void entities_add(struct entities *e, entity *ent);
+void entities_free_entity(struct entities *e, struct entity *ent);
 
 // PROJECTILE
 entity *projectile_create(Vector3 position, Vector3 destination);
